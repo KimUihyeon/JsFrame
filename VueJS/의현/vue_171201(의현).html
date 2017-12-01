@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Ex 1</title>
+
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		{{message}}
+		<div>
+			<button v-on:click="reverseMessage">버튼 뒤집기 </button>
+		</div>
+		<div>
+			<input type="text"  v-model="message" name="text" >
+		</div>
+		<div>
+			<button v-on:click="test">테스트 버튼</button>
+		</div>
+		<div>
+			<ul>
+				<li v-for="item in items">
+					{{item}}
+				</li>
+			</ul>
+		</div>
+		<div>
+			<button v-on:click="up">Up버튼 </button>
+		</div>
+	</div>
+
+	<div>
+	</div>
+
+	<script>
+
+		(function (){
+			var app = new Vue({ 
+				el: '#app',
+				data : {
+					message : '안녕하세요! Vue.js!',
+					items : [1,2,3,4,5]
+				},
+				methods:{
+					reverseMessage: function () {
+	      				this.message = this.message.split('').reverse().join('')
+					},
+
+					test : function (){
+						this.message = "test";
+					},
+					up : function (){
+						this.items.push(this.items[this.items.length-1]+1);
+					}
+
+			});
+		})();
+	</script>
+
+</body>
+</html>
